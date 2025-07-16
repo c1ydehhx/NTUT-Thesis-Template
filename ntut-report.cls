@@ -731,9 +731,9 @@
     \chapter*{\contentsname
         \@mkboth{%
            \MakeUppercase\contentsname}{\MakeUppercase\contentsname}}%
+    \addcontentsline{toc}{chapter}{目錄}
     \@starttoc{toc}%
     \if@restonecol\twocolumn\fi
-    \addcontentsline{toc}{chapter}{目錄}
     }
 \newcommand*\l@part[2]{%
   \ifnum \c@tocdepth >-2\relax
@@ -780,6 +780,7 @@
       \@restonecolfalse
     \fi
     \chapter*{\listfigurename}%
+    \addcontentsline{toc}{chapter}{圖目錄}%
       \@mkboth{\MakeUppercase\listfigurename}%
               {\MakeUppercase\listfigurename}%
     \@starttoc{lof}%
@@ -793,6 +794,7 @@
       \@restonecolfalse
     \fi
     \chapter*{\listtablename}%
+    \addcontentsline{toc}{chapter}{表目錄}%
       \@mkboth{%
           \MakeUppercase\listtablename}%
          {\MakeUppercase\listtablename}%
