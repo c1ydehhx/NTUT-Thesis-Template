@@ -888,8 +888,15 @@
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % The title of each environment
 
+\newcommand\acknowledgmentsName{致謝}
+\newcommand\tableOfContentsName{目錄}
+\newcommand\listOfFigureName{圖目錄}
+\newcommand\listOfTableName{表目錄}
+\newcommand\referencesName{參考文獻}
 \newcommand\bibname{Bibliography}
 \newcommand\indexname{Index}
+\newcommand\figureName{圖}
+\newcommand\tableName{表}
 \newcommand\partname{Part}
 \newcommand\chaptername{Chapter}
 \newcommand\appendixname{Appendix}

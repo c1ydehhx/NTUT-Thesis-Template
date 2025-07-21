@@ -16,6 +16,9 @@
 \usepackage[backend=bibtex,sorting=none]{biblatex}
 \usepackage{enumitem}
 \usepackage[nameinlink]{cleveref}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning, shapes.multipart, fit}
+\usepackage{makecell}
 
 \input{./labels/labels.sty}
 \input{./sty/basic-utils.sty}
@@ -109,10 +112,15 @@
 % Table of Contents, List of tables, List of figures
 % 目錄、表目錄與圖目錄
 \input{page/table-of-content.tex}
- 
+
+% Clear floating objects and insert a new page to prevent premature page number reset
+% 清除浮動物件並換頁，避免頁碼提前重設
+\cleardoublepage
+
 % Main text page numbers: Arabic numerals, starting again from page 1.
 % 正文頁碼：阿拉伯數字，並重新編號為第 1 頁
 \pagenumbering{arabic}
+\setcounter{page}{1}
 
 \input{chapter/_chapter-manager.tex}
 
