@@ -549,12 +549,12 @@
 }
 \newenvironment{Thanks}
 {
-    \chapter*{致謝}
+    \chapter*{誌謝}
     \vspace{0.5cm}
     \
     \begin{spacing}{2}
     \phantomsection % for hyperref to register this
-    \addcontentsline{toc}{chapter}{致謝}
+    \addcontentsline{toc}{chapter}{誌謝}
 }
 {
     \end{spacing}
