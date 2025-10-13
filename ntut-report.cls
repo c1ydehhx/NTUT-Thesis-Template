@@ -88,6 +88,7 @@
 \ProvidesClass{ntut_report}
               [2008/12/16 v0.3
  Modified Standard LaTeX document class]
+\newcommand\tocprechaptername{Chapter~}
 \newcommand\@ptsize{}
 \newif\if@restonecol
 \newif\if@titlepage
@@ -377,14 +378,12 @@
                     \@afterindentfalse
                     \secdef\@chapter\@schapter}
 \newcommand\countermapping[1]{#1}
-\newcommand\tocprechaptername{第}
-\newcommand\tocpostchaptername{章}
 \def\@chapter[#1]#2{\ifnum \c@secnumdepth >\m@ne
                          \refstepcounter{chapter}%
                          \typeout{\@chapapp\space\thechapter.}%
                          \addcontentsline{toc}{chapter}%
 %                                   {\protect\numberline{\thechapter}#1}%
-                                   {\tocprechaptername\protect\numberline{\countermapping{\zhnumber\thechapter}\tocpostchaptername}\hspace{2em}#1}%
+                                   {\tocprechaptername\protect\numberline{\countermapping{\thechapter}}#1}%
                     \else
                       \addcontentsline{toc}{chapter}{#1}%
                     \fi
@@ -397,14 +396,12 @@
                       \@makechapterhead{#2}%
                       \@afterheading
                     \fi}
-\newcommand\prechaptername{第} % default
-\newcommand\postchaptername{章}
+\newcommand\prechaptername{Chapter} % default
 \def\@makechapterhead#1{%
   {\parindent \z@ \centering \normalfont    
     \ifnum \c@secnumdepth >\m@ne
-        \LARGE\bfseries\prechaptername\countermapping{\zhnumber\thechapter}\postchaptername
+        \LARGE\bfseries\prechaptername~\countermapping{\thechapter}
     \fi
-    \hspace{1em}
     \interlinepenalty\@M
     \LARGE \bfseries #1\par\nobreak
     \vskip 20\p@
@@ -549,12 +546,12 @@
 }
 \newenvironment{Thanks}
 {
-    \chapter*{誌謝}
+    \chapter*{Acknowledgments}
     \vspace{0.5cm}
     \
     \begin{spacing}{2}
     \phantomsection % for hyperref to register this
-    \addcontentsline{toc}{chapter}{誌謝}
+    \addcontentsline{toc}{chapter}{Acknowledgments}
 }
 {
     \end{spacing}
@@ -567,7 +564,7 @@
 {
     \end{spacing}
 }
-\newenvironment{ZhChapter}
+\newenvironment{Chapter}
 {
     \begin{spacing}{2}
 }
@@ -731,7 +728,7 @@
     \chapter*{\contentsname
         \@mkboth{%
            \MakeUppercase\contentsname}{\MakeUppercase\contentsname}}%
-    \addcontentsline{toc}{chapter}{目錄}
+    \addcontentsline{toc}{chapter}{Table of Contents}
     \@starttoc{toc}%
     \if@restonecol\twocolumn\fi
     }
@@ -780,13 +777,14 @@
       \@restonecolfalse
     \fi
     \chapter*{\listfigurename}%
-    \addcontentsline{toc}{chapter}{圖目錄}%
+    \addcontentsline{toc}{chapter}{List of Figures}%
       \@mkboth{\MakeUppercase\listfigurename}%
               {\MakeUppercase\listfigurename}%
     \@starttoc{lof}%
     \if@restonecol\twocolumn\fi
     }
-\newcommand*\l@figure{\@dottedtocline{1}{1.5em}{2.3em}}
+\newcommand*\l@figure[2]{%
+  \@dottedtocline{1}{1.5em}{2.3em}{Figure~#1}{#2}}
 \newcommand\listoftables{%
     \if@twocolumn
       \@restonecoltrue\onecolumn
@@ -794,14 +792,15 @@
       \@restonecolfalse
     \fi
     \chapter*{\listtablename}%
-    \addcontentsline{toc}{chapter}{表目錄}%
+    \addcontentsline{toc}{chapter}{List of Tables}%
       \@mkboth{%
           \MakeUppercase\listtablename}%
          {\MakeUppercase\listtablename}%
     \@starttoc{lot}%
     \if@restonecol\twocolumn\fi
     }
-\let\l@table\l@figure
+\newcommand*\l@table[2]{%
+  \@dottedtocline{1}{1.5em}{2.3em}{Table~#1}{#2}}
 \newdimen\bibindent
 \setlength\bibindent{1.5em}
 \newenvironment{thebibliography}[1]
@@ -853,13 +852,13 @@
     \parindent 1em%
     \noindent
     \hb@xt@1.8em{\hss\@makefnmark}#1}
-\newcommand\contentsname{目錄}
-\newcommand\listfigurename{圖目錄}
-\newcommand\listtablename{表目錄}
+\newcommand\contentsname{Table of Contents}
+\newcommand\listfigurename{List of Figures}
+\newcommand\listtablename{List of Tables}
 \newcommand\bibname{Bibliography}
 \newcommand\indexname{Index}
-\newcommand\figurename{圖}
-\newcommand\tablename{表}
+\newcommand\figurename{Figure}
+\newcommand\tablename{Table}
 \newcommand\partname{Part}
 \newcommand\chaptername{Chapter}
 \newcommand\appendixname{Appendix}
