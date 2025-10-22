@@ -88,6 +88,8 @@
 \ProvidesClass{ntut_report}
               [2008/12/16 v0.3
  Modified Standard LaTeX document class]
+% Ensure spacing utilities are available
+\RequirePackage{setspace}
 \newcommand\tocprechaptername{Chapter~}
 \newcommand\@ptsize{}
 \newif\if@restonecol
@@ -694,16 +696,50 @@
                {\end@dblfloat}
 \newlength\abovecaptionskip
 \newlength\belowcaptionskip
+% Default vertical gaps (can be tuned if needed)
 \setlength\abovecaptionskip{10\p@}
 \setlength\belowcaptionskip{0\p@}
+
+% Caption spacing helpers
+\newcommand{\ntut@captionstretch}{1}
+\newcommand{\ntut@prevcaptionstretch}{1}
+\newcommand{\ntut@applycaptionstretch}{%
+  \normalsize
+  \setstretch{\ntut@captionstretch}%
+  \selectfont
+}
+
+% Capture current body spacing at float start
+\AtBeginDocument{%
+  \let\ntut@orig@float\@float
+  \def\@float#1{%
+    \global\edef\ntut@captionstretch{\baselinestretch}%
+    \ntut@orig@float{#1}%
+  }%
+  \let\ntut@orig@dblfloat\@dblfloat
+  \def\@dblfloat#1{%
+    \global\edef\ntut@captionstretch{\baselinestretch}%
+    \ntut@orig@dblfloat{#1}%
+  }%
+}
+
+% Centered caption macro applying captured spacing
 \long\def\@makecaption#1#2{%
   \vskip\abovecaptionskip
-  \sbox\@tempboxa{#1 #2}%
+  \sbox\@tempboxa{#1: #2}%
   \ifdim \wd\@tempboxa >\hsize
-    #1: #2\par
+    \begingroup
+      \ntut@applycaptionstretch
+      \centering
+      \setlength{\parindent}{\z@}%
+      #1: #2\par
+    \endgroup
   \else
-    \global \@minipagefalse
-    \hb@xt@\hsize{\hfil\box\@tempboxa\hfil}%
+    \begingroup
+      \ntut@applycaptionstretch
+      \global \@minipagefalse
+      \hb@xt@\hsize{\hfil\box\@tempboxa\hfil}%
+    \endgroup
   \fi
   \vskip\belowcaptionskip}
 \DeclareOldFontCommand{\rm}{\normalfont\rmfamily}{\mathrm}
