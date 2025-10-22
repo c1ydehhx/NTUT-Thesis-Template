@@ -13,11 +13,20 @@
 \usepackage{zhnumber}
 \usepackage{titlesec}
 \usepackage{amsmath}
-\usepackage[backend=bibtex,sorting=none]{biblatex}   
+\usepackage[backend=bibtex,sorting=none]{biblatex}
+\usepackage{tabularx}
+\usepackage{csquotes}
+\usepackage{subcaption}
+
+\MakeAutoQuote{“}{”}
+\MakeOuterQuote{"}
+
+\captionsetup{justification=centering,singlelinecheck=false,font={normalsize,stretch=2}}
+\captionsetup[sub]{justification=centering,singlelinecheck=false,font={normalsize,stretch=2}}
 
 \renewcommand{\baselinestretch}{1.5}
 \xeCJKsetup{AutoFakeBold=true, AutoFakeSlant=true}
-\setCJKmainfont{標楷體} % 中文字體
+\setCJKmainfont{DFKai-SB.ttf} % 中文字體
 \setmainfont{Times New Roman} % 英文字體
 \geometry{a4paper,total={297mm,210mm},top=4.5cm,bottom=0.75cm,left=2.5cm,right=2.5cm} % 頁面設定，不需修改
 \pagestyle{plain} % 頁碼

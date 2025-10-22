@@ -699,6 +699,29 @@
 \newlength\belowcaptionskip
 \setlength\abovecaptionskip{10\p@}
 \setlength\belowcaptionskip{0\p@}
+
+\newcommand{\ntut@captionstretch}{1}
+\newcommand{\ntut@prevcaptionstretch}{1}
+\newcommand{\ntut@applycaptionstretch}{%
+  \normalsize
+  \setstretch{\ntut@captionstretch}%
+  \selectfont
+}
+
+% Capture current body spacing at float start
+\AtBeginDocument{%
+  \let\ntut@orig@float\@float
+  \def\@float#1{%
+    \global\edef\ntut@captionstretch{\baselinestretch}%
+    \ntut@orig@float{#1}%
+  }%
+  \let\ntut@orig@dblfloat\@dblfloat
+  \def\@dblfloat#1{%
+    \global\edef\ntut@captionstretch{\baselinestretch}%
+    \ntut@orig@dblfloat{#1}%
+  }%
+}
+
 \long\def\@makecaption#1#2{%
   \vskip\abovecaptionskip
   \sbox\@tempboxa{#1 #2}%
