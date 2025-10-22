@@ -88,7 +88,6 @@
 \ProvidesClass{ntut_report}
               [2008/12/16 v0.3
  Modified Standard LaTeX document class]
-\newcommand\tocprechaptername{Chapter~}
 \newcommand\@ptsize{}
 \newif\if@restonecol
 \newif\if@titlepage
@@ -378,12 +377,14 @@
                     \@afterindentfalse
                     \secdef\@chapter\@schapter}
 \newcommand\countermapping[1]{#1}
+\newcommand\tocprechaptername{第}
+\newcommand\tocpostchaptername{章}
 \def\@chapter[#1]#2{\ifnum \c@secnumdepth >\m@ne
                          \refstepcounter{chapter}%
                          \typeout{\@chapapp\space\thechapter.}%
                          \addcontentsline{toc}{chapter}%
 %                                   {\protect\numberline{\thechapter}#1}%
-                                   {\tocprechaptername\protect\numberline{\countermapping{\thechapter}}#1}%
+                                   {\tocprechaptername\protect\numberline{\countermapping{\zhnumber\thechapter}\tocpostchaptername}\hspace{2em}#1}%
                     \else
                       \addcontentsline{toc}{chapter}{#1}%
                     \fi
@@ -396,12 +397,14 @@
                       \@makechapterhead{#2}%
                       \@afterheading
                     \fi}
-\newcommand\prechaptername{Chapter} % default
+\newcommand\prechaptername{第} % default
+\newcommand\postchaptername{章}
 \def\@makechapterhead#1{%
   {\parindent \z@ \centering \normalfont    
     \ifnum \c@secnumdepth >\m@ne
-        \LARGE\bfseries\prechaptername~\countermapping{\thechapter}
+        \LARGE\bfseries\prechaptername\countermapping{\zhnumber\thechapter}\postchaptername
     \fi
+    \hspace{1em}
     \interlinepenalty\@M
     \LARGE \bfseries #1\par\nobreak
     \vskip 20\p@
@@ -546,12 +549,12 @@
 }
 \newenvironment{Thanks}
 {
-    \chapter*{Acknowledgments}
+    \chapter*{誌謝}
     \vspace{0.5cm}
     \
     \begin{spacing}{2}
     \phantomsection % for hyperref to register this
-    \addcontentsline{toc}{chapter}{Acknowledgments}
+    \addcontentsline{toc}{chapter}{誌謝}
 }
 {
     \end{spacing}
@@ -564,7 +567,7 @@
 {
     \end{spacing}
 }
-\newenvironment{Chapter}
+\newenvironment{ZhChapter}
 {
     \begin{spacing}{2}
 }
@@ -696,6 +699,29 @@
 \newlength\belowcaptionskip
 \setlength\abovecaptionskip{10\p@}
 \setlength\belowcaptionskip{0\p@}
+
+\newcommand{\ntut@captionstretch}{1}
+\newcommand{\ntut@prevcaptionstretch}{1}
+\newcommand{\ntut@applycaptionstretch}{%
+  \normalsize
+  \setstretch{\ntut@captionstretch}%
+  \selectfont
+}
+
+% Capture current body spacing at float start
+\AtBeginDocument{%
+  \let\ntut@orig@float\@float
+  \def\@float#1{%
+    \global\edef\ntut@captionstretch{\baselinestretch}%
+    \ntut@orig@float{#1}%
+  }%
+  \let\ntut@orig@dblfloat\@dblfloat
+  \def\@dblfloat#1{%
+    \global\edef\ntut@captionstretch{\baselinestretch}%
+    \ntut@orig@dblfloat{#1}%
+  }%
+}
+
 \long\def\@makecaption#1#2{%
   \vskip\abovecaptionskip
   \sbox\@tempboxa{#1 #2}%
@@ -728,7 +754,7 @@
     \chapter*{\contentsname
         \@mkboth{%
            \MakeUppercase\contentsname}{\MakeUppercase\contentsname}}%
-    \addcontentsline{toc}{chapter}{Table of Contents}
+    \addcontentsline{toc}{chapter}{目錄}
     \@starttoc{toc}%
     \if@restonecol\twocolumn\fi
     }
@@ -777,14 +803,13 @@
       \@restonecolfalse
     \fi
     \chapter*{\listfigurename}%
-    \addcontentsline{toc}{chapter}{List of Figures}%
+    \addcontentsline{toc}{chapter}{圖目錄}%
       \@mkboth{\MakeUppercase\listfigurename}%
               {\MakeUppercase\listfigurename}%
     \@starttoc{lof}%
     \if@restonecol\twocolumn\fi
     }
-\newcommand*\l@figure[2]{%
-  \@dottedtocline{1}{1.5em}{2.3em}{Figure~#1}{#2}}
+\newcommand*\l@figure{\@dottedtocline{1}{1.5em}{2.3em}}
 \newcommand\listoftables{%
     \if@twocolumn
       \@restonecoltrue\onecolumn
@@ -792,15 +817,14 @@
       \@restonecolfalse
     \fi
     \chapter*{\listtablename}%
-    \addcontentsline{toc}{chapter}{List of Tables}%
+    \addcontentsline{toc}{chapter}{表目錄}%
       \@mkboth{%
           \MakeUppercase\listtablename}%
          {\MakeUppercase\listtablename}%
     \@starttoc{lot}%
     \if@restonecol\twocolumn\fi
     }
-\newcommand*\l@table[2]{%
-  \@dottedtocline{1}{1.5em}{2.3em}{Table~#1}{#2}}
+\let\l@table\l@figure
 \newdimen\bibindent
 \setlength\bibindent{1.5em}
 \newenvironment{thebibliography}[1]
@@ -852,13 +876,13 @@
     \parindent 1em%
     \noindent
     \hb@xt@1.8em{\hss\@makefnmark}#1}
-\newcommand\contentsname{Table of Contents}
-\newcommand\listfigurename{List of Figures}
-\newcommand\listtablename{List of Tables}
+\newcommand\contentsname{目錄}
+\newcommand\listfigurename{圖目錄}
+\newcommand\listtablename{表目錄}
 \newcommand\bibname{Bibliography}
 \newcommand\indexname{Index}
-\newcommand\figurename{Figure}
-\newcommand\tablename{Table}
+\newcommand\figurename{圖}
+\newcommand\tablename{表}
 \newcommand\partname{Part}
 \newcommand\chaptername{Chapter}
 \newcommand\appendixname{Appendix}
