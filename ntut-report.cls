@@ -1,5 +1,5 @@
 %%
-%% This is file `ntut_report.cls', Jul 3, 2012,
+%% This is file `ntut-report.cls', Jul 3, 2012,
 %% based on 'report.cls'.
 %%
 %%[npc] modification begins at line 377
@@ -85,7 +85,7 @@
 %%   Grave accent  \`     Left brace    \{     Vertical bar  \|
 %%   Right brace   \}     Tilde         \~}
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
-\ProvidesClass{ntut_report}
+\ProvidesClass{ntut-report}
               [2008/12/16 v0.3
  Modified Standard LaTeX document class]
 % Ensure spacing utilities are available
