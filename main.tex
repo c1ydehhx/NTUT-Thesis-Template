@@ -10,15 +10,13 @@
 \usepackage{indentfirst}
 \usepackage{setspace}
 \usepackage{hyperref}
+\usepackage{zhnumber}
 \usepackage{titlesec}
 \usepackage{amsmath}
-\usepackage[backend=biber,sorting=none]{biblatex}   
-\usepackage{subcaption}
-\usepackage{longtable}
-\usepackage{array}
-\usepackage{ltablex}
+\usepackage[backend=bibtex,sorting=none]{biblatex}
 \usepackage{tabularx}
 \usepackage{csquotes}
+\usepackage{subcaption}
 
 \MakeAutoQuote{“}{”}
 \MakeOuterQuote{"}
@@ -28,8 +26,8 @@
 
 \renewcommand{\baselinestretch}{1.5}
 \xeCJKsetup{AutoFakeBold=true, AutoFakeSlant=true}
-\setCJKmainfont{DFKai-SB.ttf} % Chinese font
-\setmainfont{Times New Roman} % English font
+\setCJKmainfont{DFKai-SB.ttf} % 中文字體
+\setmainfont{Times New Roman} % 英文字體
 \geometry{a4paper,total={297mm,210mm},top=4.5cm,bottom=0.75cm,left=2.5cm,right=2.5cm} % 頁面設定，不需修改
 \pagestyle{plain} % 頁碼
 \addbibresource{reference.bib}
@@ -38,41 +36,41 @@
 
 \begin{document}
 
-% Cover without a watermark
+% 封面、不用浮水印 Cover without a watermark
 \include{page/titlepage.tex}
-% Blank page without a watermark
+% 留白頁、不用浮水印 Blank page without a watermark
 \include{page/blankpage.tex}
 
-% Add Watermarks
+% 新增浮水印 Add Watermarks
 \CenterWallPaper{.64}{ntut-logo.png}
 
-% Cover with a watermark
-\include{page/titlepage.tex}
-% 
+% 封面、要浮水印 Cover with a watermark
+\input{page/titlepage.tex}
+% 「學位論文口試委員會審定書」掃描檔，請檢附完整簽名之審定書掃描檔
 % Please add "Oral Defense Committee Signature Form" with complete signatures.
 \includepdf[pages=-]{static-page/signpage.pdf}
 
 \pagenumbering{roman}
 
-% Abstract (Chinese)
-% If you don’t have a Chinese abstract, please delete this one.
+% 摘要頁（中文）Abstract (Chinese)
+% If you don’t have Chinese abstract, please delete this one.
 \include{page/abstract.tex}
-% Abstract (English)
+% 摘要頁（英文）Abstract (English)
 \include{page/abstract-en.tex}
-% Acknowledgements
-\include{page/acknowledgments}
-% Table of Contents, List of tables, List of figures
+% 鳴謝 Acknowledgements
+\include{page/thanks.tex}
+% 目錄、表目錄與圖目錄 Table of Contents, List of tables, List of figures
 \include{page/table-of-content.tex}
  
 \pagenumbering{arabic}
 
-% Chapter 1
+% 章節一 Chapter 1
 \include{chapter/chapter1-introduction.tex}
-% Chapter 2
+% 章節二 Chapter 2
 \include{chapter/chapter2-related-work.tex}
-% Add chapters here
+% 新增你自己的章節... Add chapters here
 
-% reference.bib
+% 參考文獻，請在段落上隨意註解，你同時需要 reference.bib
 \include{page/reference}
 
 \end{document}

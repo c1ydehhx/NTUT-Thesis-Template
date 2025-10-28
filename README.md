@@ -1,43 +1,96 @@
-# NTUT-Thesis-Overleaf-ENG-Template
-Originally based on the [NTUT Thesis Template](https://github.com/c1ydehhx/NTUT-Thesis-Template).
+# NTUT-Thesis-Template
 
-### What's new:
-- Compatible with Overleaf
-- Added English instructions
-- Added a longtable example
-- Added a subfigure example
-- Added `csquote` to automatically turn an ASCII double quotation mark `"this"` into a Unicode double quotation mark `“this”`
+基於 XeLaTeX 的北科論文模板。
 
-### Usage
+喜歡的話就點個右上角的星星：）
 
-- Either clone this repo using:
+## 快速入門
+
+### texlive 安裝
+
+你需要 `texlive` 來開始編譯 `.tex` 檔案。
+
+#### macOS
+
 ```
-git clone https://github.com/JChaloton/NTUT-Thesis-Overleaf-ENG-Template.git
+brew install texlive
 ```
-- or simply click `Download ZIP`
 
-![Download ZIP button](pics/DownloadZIP.png)
+#### Ubuntu
+```
+sudo apt-get update
+sudo apt-get install texlive-full
+```
 
-- After the file has been downloaded, open your Overleaf -> "New project" -> "Upload project".
+### 設定文件參數與字體
 
-![Overleaf-upload](pics/Overleaf-upload.png)
+你可以在 `ntut-labels.tex` 進行參數的設定，例如：科系、論文名稱、學位、研究生等。
 
-- The default compiler for Overleaf is pdfLaTeX, **Don't forget** to change the PDF compiler to **XeLaTeX** or else it won't compile.
+另外，你需要額外修改兩處：
 
-![Overleaf-compiler](pics/Compiling-XeLaTeX.png)
+- 在 `page/abstract.tex` 與 `page/abstract-en.tex` 中，你需要在此撰寫您的論文頁數與關鍵字。
+- 在 `main.tex` 中，你可能需要修改字體的檔案，例如在 macOS 或 Linux 上似乎沒有標楷體。
 
-### Documents
+### 編譯 .tex 檔案
 
-- The `ntut-labels.tex` has all the parameters for the front page, such as department name, title, degree, student name, advisor name, etc.
-- The `page/abstract.tex` and `page/abstract-en.tex` contain the content for your abstracts; the Chinese version is optional.
-- The `main.tex` compiles and includes other pages, such as the abstract, acknowledgments, table of contents, thesis chapters, and references.
-- The `chapter/` folder contains all of your thesis chapters. Feel free to add as many chapters as you need.
-- The `static-page/signpage.pdf` is a completed 'Oral Defense Committee Signature Form' with all committee signatures.
+#### 1. 使用 Make 指令
 
-### Special thanks
+如果你沒有安裝 make，可以先安裝以下指令：
 
-This repo is an English, Overleaf-compatible modification of the [NTUT Thesis Template](https://github.com/c1ydehhx/NTUT-Thesis-Template):
+```bash
+brew install make # macOS
+sudo apt install make # Ubuntu
+```
 
-- National Taipei University of Technology, Department of Computer Science and Information Engineering, Professor 孫勤昱
-- National Taipei University of Technology, Department of Computer Science and Information Engineering, Professor 陳昱圻
-- and all the contributors
+- 編譯產生論文 pdf 檔案：`make` 或是 `make all`
+- 刪除編譯產生的檔案：`make clean`
+  
+#### 2. 使用 Shell Script
+
+不需要安裝其他指令，直接跑以下指令：
+
+```bash
+./build.sh
+```
+
+#### 3. 使用 XeLaTeX 的原始指令
+
+```bash
+xelatex main
+bibtex main
+xelatex main
+```
+
+## 檔案架構
+
+你可以隨意新增自己的章節，以及修改中文與英文 abstract 的頁數與關鍵字。
+
+```
+./chapter
+├── chapter1-introduction.tex <---- 章節一
+└── chapter2-related-work.tex <---- 章節二
+./static-page
+└── signpage.pdf <----------------- 「學位論文口試委員會審定書」掃描檔
+./page
+├── abstract-en.tex <-------------- 英文 abstract
+├── abstract.tex <----------------- 中文 abstract
+├── blankpage.tex <---------------- 空白頁
+├── reference.tex <---------------- 參考文獻
+├── table-of-content.tex <--------- 各式各樣的目錄
+├── thanks.tex <------------------- 致謝
+└── titlepage.tex <---------------- 首頁
+ntut-labels.tex <------------------ 各式各樣的 label 設定值
+ntut-logo-with-label.png <--------- 北科 Logo（有國立臺北科技大學字樣）
+ntut-logo.png <-------------------- 北科 Logo 浮水印
+ntut-reports.cls <----------------- LaTeX 樣式
+reference.bib <-------------------- 參考文獻 bib 檔
+```
+
+## 特別感謝
+
+這份專案的存在，得特別感謝：
+
+- 國立臺北科技大學 資訊工程系 孫勤昱老師
+- 國立臺北科技大學 資訊工程系 陳昱圻老師
+
+感謝兩位老師給予機會與協助！

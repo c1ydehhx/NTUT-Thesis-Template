@@ -1,20 +1,20 @@
-\begin{Chapter}
+\begin{ZhChapter}
 
-\chapter{Title Example1}
+\chapter{緒論（大標）}
 
-\section{Equation}
-To reference your equation, it should use the expressions such as "E.q.~\eqref{eq1}" or "Equation ~\eqref{eq1}".
-\begin{equation}\label{eq1}
+\section{研究動機與背景（小標）}
+
+\begin{equation} 
     \mbox{$x = \dfrac{-b\pm\sqrt{b^2-4ac}}{2a}$}
 \end{equation}
 
-\subsection{Table}
+\subsection{研究背景(小小標)}
 
-\text Content Text Content Text Content Text Content Text Content Text Content Text Content Text Content Text.
+\text 背景內文背景內文背景內文背景內文,背景內文背景內文背景內文背景內文背景內文背景內文，如表 1.1 所示。
 
 \begin{table*}[htbp]
     \centering
-    \caption{Table Example AAA.} \label{tab: complexity1}
+    \caption{表格範例標題} \label{tab: complexity}
     \makebox[\linewidth][c]{
     \renewcommand\arraystretch{1.2}{
         \begin{tabular}{| l | c  c  c  c |}
@@ -30,42 +30,70 @@ To reference your equation, it should use the expressions such as "E.q.~\eqref{e
     }}
 \end {table*}
 
-\subsubsection{Section Header Level 3}
+\subsubsection{研究動機(小小標)}
 
 \begin{equation} 
     \mbox{$(1+x)^n = 1 + \dfrac{nx}{1!} + \dfrac{n(n-1)x^2}{2!}$}
 \end{equation}
 
-You can also make a little text or a number appear on other text or number, like this $10^{-4}$, or $10^{a}$, and $a^{-10}$. These are called "a power of a number", or \textit{exponent}, which indicates how many times a base number is multiplied by itself. Figure \ref{fig: image1} and Figure \ref{fig: image2} show the train station, and Table \ref{tab: complexity1} shows the table.
+動機動機動機動機，動機動機動機動機動機動機動機動機動機動機動機動機，動機動機動機動機動機動機動機動機。
+
+動機動機動機動機動機動機動機動機，動機動機動機動機動機動機動機動機動機動機動機動機。動機動機動機動機動機動機動機動機，動機動機動機動機動機動機動機動機動機動機動機動機。動機動機動機動機動機動機動機動機，動機動機動機動機動機動機動機動機動機動機動機動機，如圖 1.1、圖 1.2 所示。
 
 \begin{figure*}[htbp]
     \centering
-    \includegraphics[width = 1\textwidth]{pics/image.jpeg}
+    \includegraphics[width = 1\textwidth]{image.jpeg}
     \caption{Cool train station}
-    \label{fig: image1}
+    \label{fig: image}
 \end{figure*}
 
 \begin{figure*}[htbp]
     \centering
-    \includegraphics[width = 1\textwidth]{pics/train-station2.jpeg}
-    \caption{This cool train station stands as a metaphor for life itself, everyone's waiting, no one knows when their train will arrive, and someone's always holding the wrong ticket. Yet, we all stand here pretending everything's fine, sipping overpriced coffee with quiet determination}
-    \label{fig: image2}
+    \includegraphics[width = 1\textwidth]{image.jpeg}
+    \caption{"Cool train station" "Cool train station" "Cool train station" "Cool train station" "Cool train station" "Cool train station" "Cool train station" "Cool train station" "Cool train station" "Cool train station" "Cool train station" "Cool train station"}
+    \label{fig: image}
 \end{figure*}
 
 \begin{figure*}[htbp]
     \centering
-    \includegraphics[width = 1\textwidth]{pics/train-station3.jpg}
+    \includegraphics[width = 1\textwidth]{image.jpeg}
     \caption{Cool train station}
-    \label{fig: image3}
+    \label{fig: image}
 \end{figure*}
 
-Content Text Content Text Content Text Content Text Content Text Content Text Content Text Content Text Content Text Content Text Content Text Content Text Content Text.
+\begin{table*}[htbp]
+    \centering
+    \caption{表格範例標題} \label{tab: complexity}
+    \makebox[\linewidth][c]{
+    \renewcommand\arraystretch{1.2}{
+        \begin{tabular}{| l | c  c  c  c |}
+        \hline
+        Protocol & $P$ & $CS_1$ & $CS_2$ & $RG$ \\
+        \hline
+        MSSMul & $O(1)$, $O(1)$, N/A & $O(n-t)$, $O(n)$, $O(1)$ & $O(n-t)$, $O(n)$, N/A & $O(1)$, $O(n)$, $O(n)$ \\
+        MSSAdd & $O(1)$, $O(1)$, N/A & $O(n-t)$, $O(n)$, $O(1)$ & N/A, N/A, N/A & $O(1)$, $O(n)$, $O(n)$ \\
+        SC & $O(1)$, $O(1)$, N/A & $O(n-t)$, $O(n)$, $O(1)$ & $O(n-t)$, $O(n)$, N/A & $O(1)$, $O(n)$, $O(n)$ \\
+        MSSMul & $O(1)$, $O(1)$, N/A & $O(n-t)$, $O(n)$, $O(1)$ & $O(n-t)$, $O(n)$, N/A & $O(1)$, $O(n)$, $O(n)$ \\
+        MSSAdd & $O(1)$, $O(1)$, N/A & $O(n-t)$, $O(n)$, $O(1)$ & N/A, N/A, N/A & $O(1)$, $O(n)$, $O(n)$ \\
+        SC & $O(1)$, $O(1)$, N/A & $O(n-t)$, $O(n)$, $O(1)$ & $O(n-t)$, $O(n)$, N/A & $O(1)$, $O(n)$, $O(n)$ \\
+        \hline 
+        \end {tabular}
+    }}
+\end {table*}
+
+動機動機動機動機，動機動機動機動機動機動機動機動機動機動機動機動機，動機動機動機動機動機動機動機動機。
+
+動機動機動機動機，動機動機動機動機動機動機動機動機動機動機動機動機，動機動機動機動機動機動機動機動機。動機動機動機動機，動機動機動機動機動機動機動機動機動機動機動機動機，動機動機動機動機動機動機動機動機。
+
+動機動機動機動機，動機動機動機動機動機動機動機動機動機動機動機動機，動機動機動機動機動機動機動機動機。動機動機動機動機，動機動機動機動機動機動機動機動機動機動機動機動機，動機動機動機動機動機動機動機動機。動機動機動機動機，動機動機動機動機動機動機動機動機動機動機動機動機，動機動機動機動機動機動機動機動機。
+
+動機動機動機動機，動機動機動機動機動機動機動機動機動機動機動機動機，動機動機動機動機動機動機動機動機。動機動機動機動機，動機動機動機動機動機動機動機動機動機動機動機動機，動機動機動機動機動機動機動機動機。動機動機動機動機，動機動機動機動機動機動機動機動機動機動機動機動機，動機動機動機動機動機動機動機動機。動機動機動機動機，動機動機動機動機動機動機動機動機動機動機動機動機，動機動機動機動機動機動機動機動機。
 
 \begin{figure*}[htbp]
     \centering
-    \includegraphics[width = 0.5\textwidth]{pics/train-station4.jpg}
+    \includegraphics[width = 0.5\textwidth]{image.jpeg}
     \caption{Cool train station}
-    \label{fig: image4}
+    \label{fig: image}
 \end{figure*}
 
-\end{Chapter}
+\end{ZhChapter}
