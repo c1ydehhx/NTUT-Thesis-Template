@@ -525,12 +525,12 @@
 }
 \newenvironment{EnAbstract}
 {
-    \chapter*{Abstract}
+    \chapter*{ABSTRACT}
     \vspace{0.5cm}
     \
     \begin{spacing}{2}
     \phantomsection % for hyperref to register this
-    \addcontentsline{toc}{chapter}{Abstract}
+    \addcontentsline{toc}{chapter}{ABSTRACT}
 }
 {
     \end{spacing}
