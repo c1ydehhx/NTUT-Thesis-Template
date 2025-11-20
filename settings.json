@@ -1,0 +1,99 @@
+{
+  // === LaTeX Workshop: Automatic Complete Compilation Configuration ===
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "latexmk (XeLaTeX with Biber)",
+      "tools": ["latexmk_xelatex_biber"]
+    },
+    {
+      "name": "XeLaTeX → Biber → XeLaTeX*2",
+      "tools": ["xelatex", "biber", "xelatex", "xelatex"]
+    },
+    {
+      "name": "XeLaTeX only",
+      "tools": ["xelatex"]
+    }
+  ],
+
+  "latex-workshop.latex.tools": [
+    {
+      "name": "latexmk_xelatex_biber",
+      "command": "latexmk",
+      "args": [
+        "-xelatex",
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "-shell-escape",
+        "-bibtex",
+        "%DOC%"
+      ]
+    },
+    {
+      "name": "xelatex",
+      "command": "xelatex",
+      "args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "-shell-escape",
+        "%DOC%"
+      ]
+    },
+    {
+      "name": "biber",
+      "command": "biber",
+      "args": ["%DOCFILE%"]
+    }
+  ],
+
+  // === Auto Build Settings ===
+  "latex-workshop.latex.autoBuild.run": "onSave",
+  "latex-workshop.latex.autoBuild.cleanAndRetry.enabled": true,
+  "latex-workshop.latex.autoBuild.interval": 1000,
+
+  // === Auto Clean Settings ===
+  "latex-workshop.latex.autoClean.run": "onBuilt",
+  "latex-workshop.latex.clean.fileTypes": [
+    "*.aux",
+    "*.bbl",
+    "*.blg",
+    "*.idx",
+    "*.ind",
+    "*.lof",
+    "*.lot",
+    "*.out",
+    "*.toc",
+    "*.acn",
+    "*.acr",
+    "*.alg",
+    "*.glg",
+    "*.glo",
+    "*.gls",
+    "*.fls",
+    "*.log",
+    "*.fdb_latexmk",
+    "*.snm",
+    "*.nav",
+    "*.bcf",
+    "*.run.xml"
+  ],
+  "latex-workshop.latex.clean.subfolder.enabled": true,
+
+  // === PDF Viewer Settings ===
+  "latex-workshop.view.pdf.viewer": "tab",
+  "latex-workshop.view.pdf.ref.viewer": "auto",
+  "latex-workshop.view.pdf.sync.synctex.enabled": true,
+
+  // === Message Display Settings ===
+  "latex-workshop.message.error.show": true,
+  "latex-workshop.message.warning.show": false,
+  "latex-workshop.message.information.show": false,
+  
+  // === Recipe Selection Settings ===
+  "latex-workshop.latex.recipe.default": "first",
+
+  // === IntelliSense Settings ===
+  "latex-workshop.intellisense.biblatexJSON.replace": {},
+  "latex-workshop.intellisense.bibtexJSON.replace": {}
+}
